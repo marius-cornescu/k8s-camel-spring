@@ -14,6 +14,10 @@ EXPOSE 8080
 RUN apk add openjdk11
 
 RUN mkdir /jars
-ADD target/app.jar /jars/
-CMD ["java", "-jar", "/jars/app.jar"]
+ADD k8s-camel-spring-first/target/k8s-camel-spring-first-1.0-SNAPSHOT.jar /jars/
+#
+RUN mkdir /configs
+ADD k8s-camel-spring-first/src/main/resources/PROD-application.properties /configs/application.properties
+#
+CMD ["java", "-jar", "/jars/k8s-camel-spring-first-1.0-SNAPSHOT.jar", "--spring.config.location=file:///configs/application.properties"]
 #################################################################

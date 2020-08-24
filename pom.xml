@@ -20,6 +20,7 @@
 
     <properties>
         <camel.version>3.0.0</camel.version>
+        <spring-boot.version>2.1.9.RELEASE</spring-boot.version>
 
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <java.version>1.8</java.version>
@@ -37,6 +38,14 @@
                 <groupId>com.rtzan.camel.k8s</groupId>
                 <artifactId>k8s-camel-spring-common</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.camel.springboot</groupId>
+                <artifactId>camel-spring-boot-dependencies</artifactId>
+                <version>${camel.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <dependency>
@@ -77,18 +86,4 @@
 
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
